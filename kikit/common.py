@@ -70,9 +70,9 @@ def findBoundingBox(edges):
     """
     if len(edges) == 0:
         raise RuntimeError("No board edges found")
-    boundingBox = getBBoxWithoutContours(edges[0])
+    boundingBox = edges[0].GetBoundingBox()
     for edge in edges[1:]:
-        boundingBox = combineBoundingBoxes(boundingBox, getBBoxWithoutContours(edge))
+        boundingBox = combineBoundingBoxes(boundingBox, edge.GetBoundingBox())
     return boundingBox
 
 def findBoardBoundingBox(board, sourceArea=None):
